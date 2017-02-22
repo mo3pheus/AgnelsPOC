@@ -1,4 +1,4 @@
-package egen.solutions.ennate.egen.solutions.sml.driver;
+package agnels.machine.learning.sml.driver;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-import ennate.egen.solutions.sml.domain.Classifier;
-import ennate.egen.solutions.sml.domain.Data;
-import ennate.egen.solutions.sml.domain.Result;
+import agnels.machine.learning.sml.domain.Classifier;
+import agnels.machine.learning.sml.domain.Data;
+import agnels.machine.learning.sml.domain.Result;
 
 public class DataOperations<T extends Classifier> {
 

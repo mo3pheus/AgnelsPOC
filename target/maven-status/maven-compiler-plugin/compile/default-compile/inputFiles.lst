@@ -1,9 +1,7 @@
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/egen/solutions/ennate/egen/solutions/sml/driver/IrisDriver.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/Result.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/GenericData.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/Classifier.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/DataModel.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/Iris.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/ClassificationEngine.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/egen/solutions/ennate/egen/solutions/sml/driver/DataOperations.java
-/Users/sanketkorgaonkar/Documents/EGen/DSTrainingCourse/Code/SML/SML-Sandbox/ennate.egen.solutions.sml/src/main/java/ennate/egen/solutions/sml/domain/Data.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/domain/Classifier.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/domain/ClassificationEngine.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/driver/DataOperations.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/driver/IrisDriver.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/domain/Data.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/domain/DataModel.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/agnels/machine/learning/sml/domain/Result.java

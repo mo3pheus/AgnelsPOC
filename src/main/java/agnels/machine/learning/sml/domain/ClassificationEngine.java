@@ -1,4 +1,4 @@
-package ennate.egen.solutions.sml.domain;
+package agnels.machine.learning.sml.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;

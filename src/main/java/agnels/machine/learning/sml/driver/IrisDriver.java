@@ -1,9 +1,9 @@
-package egen.solutions.ennate.egen.solutions.sml.driver;
+package agnels.machine.learning.sml.driver;
 
 import java.io.IOException;
 
-import ennate.egen.solutions.sml.domain.ClassificationEngine;
-import ennate.egen.solutions.sml.domain.DataModel;
+import agnels.machine.learning.sml.domain.ClassificationEngine;
+import agnels.machine.learning.sml.domain.DataModel;
 
 public class IrisDriver {
 
