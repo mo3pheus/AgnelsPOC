@@ -1,4 +1,4 @@
-package agnels.machine.learning.sml.domain;
+package ml.poc.agnels.edu.domain;
 
 public class Result {
 	private double confidence;

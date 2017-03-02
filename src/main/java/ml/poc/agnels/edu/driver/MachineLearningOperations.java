@@ -1,37 +1,69 @@
-package agnels.machine.learning.sml.driver;
+package ml.poc.agnels.edu.driver;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import agnels.machine.learning.sml.domain.Classifier;
-import agnels.machine.learning.sml.domain.Data;
-import agnels.machine.learning.sml.domain.Result;
+import ml.poc.agnels.edu.domain.Classifier;
+import ml.poc.agnels.edu.domain.Clusterer;
+import ml.poc.agnels.edu.domain.Data;
+import ml.poc.agnels.edu.domain.Result;
+import ml.poc.agnels.edu.domain.Clusterer.ClusteredPoints;
 
-public class DataOperations<T extends Classifier> {
+public abstract class MachineLearningOperations<T extends Classifier> {
 
 	private ArrayList<Data> trainingSet;
 	private ArrayList<Data> testingSet;
 	private ArrayList<Data> totalDataset;
-	private T classificationEngine;
+	protected T classificationEngine;
+	protected Clusterer clusteringEngine;
 	
-	public DataOperations() {
+	/**
+	 * Instantiates the class.
+	 */
+	public MachineLearningOperations() {
 		trainingSet = new ArrayList<Data>();
 		testingSet = new ArrayList<Data>();
 		totalDataset = new ArrayList<Data>();
 	}
 	
-	public void setClassificationEngine(T classificationEngine){
-		this.classificationEngine = classificationEngine;
-	}
+	/**
+	 * Sets the classification engine
+	 * @param classificationEngine
+	 */
+	public abstract void setClassificationEngine(T classificationEngine);
 	
-	public T getClassificationEngine(){
-		return classificationEngine;
-	}
+	/**
+	 * Returns the classification Engine
+	 * @return
+	 */
+	public abstract T getClassificationEngine();
+	
+	/**
+	 *  Returns clusteringEngine
+	 * @return
+	 */
+	public abstract Clusterer getClusterer();
+	
+	/**
+	 *  Sets the clusteringEngine
+	 * @param clusteringEngine
+	 */
+	public abstract void setClusterer(Clusterer clusteringEngine);
 
+	/**
+	 *  Loads the data from the given fileLocation. Data needs to be delimiter separated with the last column
+	 *  showing the classId.
+	 *  
+	 * @param fileLocation
+	 * @param delimiter
+	 * @param numberOfFields
+	 * @throws IOException
+	 */
 	public void loadData(String fileLocation, String delimiter, int numberOfFields) throws IOException {
 		/*
 		 * Load the file
@@ -62,25 +94,27 @@ public class DataOperations<T extends Classifier> {
 	 * @param trainPercent
 	 */
 	public void populateTrainTestSets(int trainPercent) {
+		/* Sanity check */
 		if (trainPercent >= 100) {
-			System.out.println("Using entire data for training is stupid!");
+			System.out.println("Using entire data for training causes no learning!");
 		}
 
 		int trainSamplesCount = (int) (totalDataset.size() * trainPercent / 100.0d);
 		int testSamplesCount = totalDataset.size() - trainSamplesCount;
 		int[] testIndices = new int[testSamplesCount];
 
-		// generate the indices for random test samples
+		/* generate the indices for random test samples */
 		int numFilled = 0;
 		while (numFilled != testSamplesCount) {
 			int randomNum = ThreadLocalRandom.current().nextInt(0, testSamplesCount + 1);
 			if (!alreadyPresent(randomNum, testIndices)) {
 				testIndices[numFilled] = randomNum;
+				System.out.println("Random seed = " + randomNum);
 				numFilled++;
 			}
 		}
 
-		// pull the elements and populate the arrays
+		/* pull the elements and populate the arrays */
 		for (int i = 0; i < totalDataset.size(); i++) {
 			Data temp = totalDataset.get(i);
 			if (alreadyPresent(i, testIndices)) {
@@ -91,6 +125,10 @@ public class DataOperations<T extends Classifier> {
 		}
 	}
 	
+	/**
+	 *  This function gets the accuracy score by evaluating learnt models on testSet.
+	 * @return
+	 */
 	public double getAccuracy() {
 		int totalTest = testingSet.size();
 		int accurate = 0;
@@ -105,12 +143,39 @@ public class DataOperations<T extends Classifier> {
 		return (double) (accurate / (double) totalTest) * 100.0d;
 	}
 
+	/**
+	 *  Returns List of training data points
+	 * @return
+	 */
 	public ArrayList<Data> getTrainingData() {
 		return trainingSet;
 	}
 
+	/**
+	 * Returns List of testing data points
+	 * @return
+	 */
 	public ArrayList<Data> getTestingData() {
 		return testingSet;
+	}
+	
+	/**
+	 * This function computes the total cost of the clustered points.
+	 * @param map
+	 * @return
+	 * @throws Exception
+	 */
+	public double getCostFunction(Map<Data,ClusteredPoints> map) throws Exception{
+		double cost = 0.0d;
+		
+		for(Data centroid:map.keySet()){
+			ClusteredPoints points = map.get(centroid);
+			for(int i = 0; i < points.getPoints().size(); i++){
+				cost += Clusterer.getDistance(centroid,  points.getPoints().get(i));
+			}
+		}
+		
+		return cost;
 	}
 
 	private boolean alreadyPresent(int target, int[] host) {
