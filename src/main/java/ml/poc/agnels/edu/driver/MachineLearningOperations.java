@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import ml.poc.agnels.edu.domain.Classifier;
-import ml.poc.agnels.edu.domain.Clusterer;
+import ml.poc.agnels.edu.domain.ClusteringEngine;
 import ml.poc.agnels.edu.domain.Data;
 import ml.poc.agnels.edu.domain.Result;
-import ml.poc.agnels.edu.domain.Clusterer.ClusteredPoints;
+import ml.poc.agnels.edu.domain.ClusteringEngine.ClusteredPoints;
 
 public abstract class MachineLearningOperations<T extends Classifier> {
 
@@ -20,7 +20,7 @@ public abstract class MachineLearningOperations<T extends Classifier> {
 	private ArrayList<Data> testingSet;
 	private ArrayList<Data> totalDataset;
 	protected T classificationEngine;
-	protected Clusterer clusteringEngine;
+	protected ClusteringEngine clusteringEngine;
 	
 	/**
 	 * Instantiates the class.
@@ -47,13 +47,13 @@ public abstract class MachineLearningOperations<T extends Classifier> {
 	 *  Returns clusteringEngine
 	 * @return
 	 */
-	public abstract Clusterer getClusterer();
+	public abstract ClusteringEngine getClusterer();
 	
 	/**
 	 *  Sets the clusteringEngine
 	 * @param clusteringEngine
 	 */
-	public abstract void setClusterer(Clusterer clusteringEngine);
+	public abstract void setClusterer(ClusteringEngine clusteringEngine);
 
 	/**
 	 *  Loads the data from the given fileLocation. Data needs to be delimiter separated with the last column
@@ -109,7 +109,7 @@ public abstract class MachineLearningOperations<T extends Classifier> {
 			int randomNum = ThreadLocalRandom.current().nextInt(0, testSamplesCount + 1);
 			if (!alreadyPresent(randomNum, testIndices)) {
 				testIndices[numFilled] = randomNum;
-				System.out.println("Random seed = " + randomNum);
+				// System.out.println("Random seed = " + randomNum);
 				numFilled++;
 			}
 		}
@@ -171,7 +171,7 @@ public abstract class MachineLearningOperations<T extends Classifier> {
 		for(Data centroid:map.keySet()){
 			ClusteredPoints points = map.get(centroid);
 			for(int i = 0; i < points.getPoints().size(); i++){
-				cost += Clusterer.getDistance(centroid,  points.getPoints().get(i));
+				cost += ClusteringEngine.getDistance(centroid,  points.getPoints().get(i));
 			}
 		}
 		

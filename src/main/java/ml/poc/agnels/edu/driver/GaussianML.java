@@ -1,9 +1,9 @@
 package ml.poc.agnels.edu.driver;
 
 import ml.poc.agnels.edu.domain.ClassificationEngine;
-import ml.poc.agnels.edu.domain.Clusterer;
+import ml.poc.agnels.edu.domain.ClusteringEngine;
 
-public class SanketML extends MachineLearningOperations<ClassificationEngine>{
+public class GaussianML extends MachineLearningOperations<ClassificationEngine>{
 
 	@Override
 	public ClassificationEngine getClassificationEngine() {
@@ -16,12 +16,12 @@ public class SanketML extends MachineLearningOperations<ClassificationEngine>{
 	}
 
 	@Override
-	public Clusterer getClusterer() {
+	public ClusteringEngine getClusterer() {
 		return clusteringEngine;
 	}
 
 	@Override
-	public void setClusterer(Clusterer clusteringEngine) {
+	public void setClusterer(ClusteringEngine clusteringEngine) {
 		this.clusteringEngine = clusteringEngine;
 	}
 }

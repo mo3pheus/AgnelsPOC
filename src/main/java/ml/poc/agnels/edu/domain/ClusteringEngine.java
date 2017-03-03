@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Clusterer implements IClusterStuff {
+public class ClusteringEngine implements IClusterStuff {
 
 	public static final double ERR_MARGIN = 0.0001d;
 	public static final int MAX_ITERATIONS = 1000;
@@ -192,7 +192,7 @@ public class Clusterer implements IClusterStuff {
 		}
 	}
 
-	private void computeCentroids(ClusteredPoints[] clusteredPoints, List<Data> centroids, int numFields) {
+	private void computeCentroids(ClusteredPoints[] clusteredPoints, List<Data> centroids, int numFields) throws Exception{
 		clearCentroids(centroids);
 		for (int i = 0; i < clusteredPoints.length; i++) {
 			Data centroidPoint = new Data(numFields);
@@ -206,7 +206,11 @@ public class Clusterer implements IClusterStuff {
 		}
 	}
 
-	private void averageData(Data data, int num) {
+	private void averageData(Data data, int num) throws Exception{
+		if(num == 0){
+			throw new Exception(" Division attempted by 0! ");
+		}
+		
 		Double[] fields = data.getFields();
 		for (int i = 0; i < fields.length; i++) {
 			fields[i] /= (double) num;

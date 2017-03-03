@@ -1,9 +1,9 @@
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/ClassificationEngine.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/DataModel.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/driver/MachineLearningOperations.java
-/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/Clusterer.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/ClusteringEngine.java
+/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/driver/GaussianML.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/driver/IrisDriver.java
-/Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/driver/SanketML.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/Result.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/Classifier.java
 /Users/sanketkorgaonkar/AgnelsPOC/src/main/java/ml/poc/agnels/edu/domain/Data.java

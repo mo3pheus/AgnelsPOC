@@ -1,10 +1,10 @@
 ml/poc/agnels/edu/domain/Classifier.class
-ml/poc/agnels/edu/domain/Clusterer$ClusteredPoints.class
 ml/poc/agnels/edu/domain/Data.class
+ml/poc/agnels/edu/domain/ClusteringEngine.class
 ml/poc/agnels/edu/driver/IrisDriver.class
-ml/poc/agnels/edu/domain/Clusterer.class
 ml/poc/agnels/edu/domain/DataModel.class
-ml/poc/agnels/edu/driver/SanketML.class
+ml/poc/agnels/edu/driver/GaussianML.class
+ml/poc/agnels/edu/domain/ClusteringEngine$ClusteredPoints.class
 ml/poc/agnels/edu/domain/IClusterStuff.class
 ml/poc/agnels/edu/driver/MachineLearningOperations.class
 ml/poc/agnels/edu/domain/ClassificationEngine.class

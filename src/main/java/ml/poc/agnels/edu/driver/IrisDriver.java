@@ -4,20 +4,33 @@ import java.io.IOException;
 import java.util.Map;
 
 import ml.poc.agnels.edu.domain.ClassificationEngine;
-import ml.poc.agnels.edu.domain.Clusterer;
+import ml.poc.agnels.edu.domain.ClusteringEngine;
 import ml.poc.agnels.edu.domain.Data;
 import ml.poc.agnels.edu.domain.DataModel;
-import ml.poc.agnels.edu.domain.Clusterer.ClusteredPoints;
+import ml.poc.agnels.edu.domain.ClusteringEngine.ClusteredPoints;
 
 public class IrisDriver {
 
 	public static void main(String[] args) {
-		SanketML irisProblem = new SanketML();
+		/*
+		 * CLASSIFICATION::
+		 * 
+		 * 1. Create an instance of the ML Framework.
+		 */
+		GaussianML irisProblem = new GaussianML();
+		
+		/*
+		 * 2. Load the data set.
+		 */
 		try {
 			irisProblem.loadData("iris.data.txt", ",", 4);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		/*
+		 * 3. Select a training percentage.
+		 */
 		irisProblem.populateTrainTestSets(80);
 
 		System.out.println(" Number of training samples = " + irisProblem.getTrainingData().size());
@@ -26,26 +39,31 @@ public class IrisDriver {
 		/*
 		 * This part should be done by the students. Implement your own version
 		 * of ClassificationEngine and compare accuracy you get.
-		 * 
-		 * 1. Instantiate the classificationEngine,
-		 * 2. Report accuracy.
-		 * 
 		 */
 		ClassificationEngine classificationEngine = new ClassificationEngine();
+		
+		/*
+		 * 4. Train the classificationEngine on the training data.
+		 */
 		classificationEngine.buildModels(irisProblem.getTrainingData(), 4);
 
 		for (DataModel model : classificationEngine.getModles()) {
+			// print the trained models.
 			System.out.println(model.toString());
 		}
 		irisProblem.setClassificationEngine(classificationEngine);
 
+		/*
+		 * 5. Get the accuracy percentage.
+		 */
 		System.out.println("Accuracy Percentage = " + irisProblem.getAccuracy() + " %");
 
 		/*
+		 * CLUSTERING::
 		 * Implements k-means clustering algorithm
 		 */
 		int numClusters = 3;
-		Clusterer clusterer = new Clusterer();
+		ClusteringEngine clusterer = new ClusteringEngine();
 		try {
 			Map<Data, ClusteredPoints> result = clusterer.clusterData(irisProblem.getTrainingData(), numClusters);
 			irisProblem.setClusterer(clusterer);
